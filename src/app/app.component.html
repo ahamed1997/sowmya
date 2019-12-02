@@ -1,0 +1,37 @@
+<h1 *ngIf="authenticationService.userData | async">Hello {{ (authenticationService.userData | async)?.email }}</h1>
+
+<div *ngIf="!(authenticationService.userData | async)">
+    <input type="text" [(ngModel)]="email" placeholder="email">
+    <input type="password" [(ngModel)]="password" placeholder="password">
+
+    <button (click)="signUp()">Sign Up</button>
+
+    <button (click)="signIn()">Login</button>
+</div>
+
+<button (click)="signOut()" *ngIf="authenticationService.userData | async">Logout</button>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD3bOOeJD3gQ2CZxL8-DCR5r2rkNiukYlU",
+    authDomain: "examlogin-f9ba5.firebaseapp.com",
+    databaseURL: "https://examlogin-f9ba5.firebaseio.com",
+    projectId: "examlogin-f9ba5",
+    storageBucket: "examlogin-f9ba5.appspot.com",
+    messagingSenderId: "505620756922",
+    appId: "1:505620756922:web:0d2c9e167dcfce83388583",
+    measurementId: "G-2G48HCBBQZ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
